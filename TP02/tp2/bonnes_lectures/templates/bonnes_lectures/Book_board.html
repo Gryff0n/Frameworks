@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang ="fr">
+<head><meta charset = "utf-8" ></head>
+<body><h1>Book Board</h1>
+<ol>{%for book in books %}
+<li><ul><b>Titre : </b><a href="{% url 'books' book.id %}">{{book.title}}</a></ul></li>
+{%endfor%}</ol>
+</body>
+</html>

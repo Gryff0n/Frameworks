@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
+from .models import Book
 
 # Create your views here.
 def about(request):
@@ -8,3 +9,11 @@ def about(request):
 
 def welcome(request):
     return render(request, "bonnes_lectures/welcome.html")
+
+def books(request , book_id ) :
+    book = Book.objects.get(pk=book_id)
+    return render(request, "bonnes_lectures/book.html",{"book" : book})
+
+def bookBoard ( request ) :
+    books = Book.objects.all()
+    return render(request, "bonnes_lectures/Book_board.html",{"books" : books})
