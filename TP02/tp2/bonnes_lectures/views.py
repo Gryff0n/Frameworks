@@ -10,9 +10,9 @@ def about(request):
 def welcome(request):
     return render(request, "bonnes_lectures/welcome.html")
 
-def books(request , book_id ) :
-    book = Book.objects.get(pk=book_id)
-    return render(request, "bonnes_lectures/book.html",{"book" : book})
+def book(request , book_id ) :
+    books = Book.objects.get(pk=book_id)
+    return render(request, "bonnes_lectures/book.html",{"book" : books})
 
 def bookBoard ( request ) :
     books = Book.objects.all()
