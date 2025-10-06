@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<h1>{{book.title}}</h1>
+<ul>
+    <li><b>Titre : </b>{{book.title}}</li>
+    <li><b>Editeur : </b>{{book.publisher}}</li>
+    <li><b>Année : </b>{{book.year}}</li>
+    <li><b>ISBN : </b>{{book.ISBN}}</li>
+    <li><b>Backcover : </b>{{book.backCover}}</li>
+    <li><b>Cover : </b>{{book.cover}}</li>
+</ul>
+<td>
+<a href="{% url 'edit_book' book.id %}">éditer</a><br>
+<a href="{% url 'delete_book' book.id %}">effacer</a>
+</td>
+<br>
+<br>
+<li><a href="/bookBoard">Retour a la Liste</a></li>
