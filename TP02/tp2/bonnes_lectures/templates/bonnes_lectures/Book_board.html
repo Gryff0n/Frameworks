@@ -5,5 +5,7 @@
 <ol>{%for book in books %}
 <li><ul><b>Titre : </b><a href="{% url 'book' book.id %}">{{book.title}}</a></ul></li>
 {%endfor%}</ol>
+
+<li><a href="welcome">retour a l'accueil</a></li>
 </body>
 </html>
