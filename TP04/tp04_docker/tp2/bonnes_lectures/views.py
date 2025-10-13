@@ -32,7 +32,7 @@ def newBook(request):
     else:
         form = BookForm()  # Formulaire vide
 
-    return render(request, "bonnes_lectures/BookForm.html", {"form": form})
+    return render(request, "bonnes_lectures/BookForm.html", {"form": form, "button_label": "Ajouter"})
 
 def delete_book(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
