@@ -4,7 +4,7 @@ from time import timezone
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.template import loader
-from .models import Book
+from .models import *
 from bonnes_lectures.forms import *
 
 # Create your views here.
@@ -15,8 +15,9 @@ def welcome(request):
     return render(request, "bonnes_lectures/welcome.html")
 
 def book(request , book_id ) :
-    books = Book.objects.get(pk=book_id)
-    return render(request, "bonnes_lectures/book.html",{"book" : books})
+    thebook = Book.objects.get(pk=book_id)
+    reviews = Review.objects.filter(livre=thebook)
+    return render(request, "bonnes_lectures/book.html",{"book" : thebook, "reviews" : reviews})
 
 def bookBoard ( request ) :
     books = Book.objects.all()

@@ -18,10 +18,21 @@
     <li><b>Backcover : </b>{{book.backCover}}</li>
     <li><b>Cover : </b>{{book.cover}}</li>
 </ul>
+<br>
+{% for review in reviews %}
+<br>
+<ul>
+    <li>{{review.date}}</li>
+    <li>{{review.review}}</li>
+    <li>{{review.text}}</li>
+
+</ul>
+<br>
 <td>
 <a href="{% url 'edit_book' book.id %}">éditer</a><br>
 <a href="{% url 'delete_book' book.id %}">effacer</a>
 </td>
 <br>
+<!--ajouter bouton 'ajouter avis'-->
 <br>
 <li><a href="/bookBoard">Retour a la Liste</a></li>

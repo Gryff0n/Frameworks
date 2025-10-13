@@ -9,14 +9,16 @@
     <head>
     <meta charset ="utf-8">
     </head>
+<!--A FINIR-->
+
 
     <body>
-        <form action ="newBook" method = "post">
+        <form action ="newReview" method = "post">
             {%csrf_token%} <!--Obligatoire : secu contre CSRF -->
             {{form}}
             <input type = "submit" value = "{{button_label}}">
         </form>
-        <li><a href="{% url 'book' book.id %}">liste de livres</a></li>
+        <li><a href="/book">liste de livres</a></li>
         <li><a href="/welcome">retour a l'accueil</a></li>
     </body>
 
