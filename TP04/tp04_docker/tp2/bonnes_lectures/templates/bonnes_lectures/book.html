@@ -19,20 +19,25 @@
     <li><b>Cover : </b>{{book.cover}}</li>
 </ul>
 <br>
-{% for review in reviews %}
-<br>
-<ul>
-    <li>{{review.date}}</li>
-    <li>{{review.review}}</li>
-    <li>{{review.text}}</li>
-
-</ul>
-<br>
+{% if book.reviews.all %}
+    {% for review in book.reviews.all %}
+    <br>
+    <ul>
+        <b>date de publication : </b>{{review.date}}</li><br>
+        <b>note : </b>{{review.review}}</li><br>
+        <b>avis : </b>{{review.text}}</li><br>
+        <a href="{% url 'newReview' review.id %}">éditer</a><br>
+        <a href="{% url 'delete_review' book.id review.id %}">effacer</a><br>
+    </ul>
+    <br>
+    {% endfor %}
+{% endif %}
 <td>
+<a href="newBook">Ajouter un livre</a><br>
 <a href="{% url 'edit_book' book.id %}">éditer</a><br>
-<a href="{% url 'delete_book' book.id %}">effacer</a>
+<a href="{% url 'delete_book' book.id %}">effacer</a><br>
 </td>
 <br>
-<!--ajouter bouton 'ajouter avis'-->
+<a href="{% url 'newReview' book.id %}">ajouter avis</a><br>
 <br>
 <li><a href="/bookBoard">Retour a la Liste</a></li>

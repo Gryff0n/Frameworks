@@ -12,7 +12,7 @@ class Book(models.Model):
 
 
 class Review(models.Model):
-  date = models.DateField()
+  date = models.DateField(auto_now_add=True)
   text = models.CharField()
   review = models.SmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
-  book = models.ForeignKey (Book , on_delete=models.CASCADE)
+  book = models.ForeignKey (Book , on_delete=models.CASCADE, related_name="reviews")

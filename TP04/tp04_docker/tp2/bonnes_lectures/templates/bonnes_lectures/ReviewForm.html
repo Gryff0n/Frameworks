@@ -13,7 +13,7 @@
 
 
     <body>
-        <form action ="newReview" method = "post">
+        <form action ="{% url 'newReview' book.id %}" method = "post">
             {%csrf_token%} <!--Obligatoire : secu contre CSRF -->
             {{form}}
             <input type = "submit" value = "{{button_label}}">

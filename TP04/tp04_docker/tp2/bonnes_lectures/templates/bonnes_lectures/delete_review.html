@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+{# Load the tag library #}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>Voulez-vous vraiment effacer la review ?</h1>
+    <ul>
+        <li><b>date :</b> {{ review.date }}</li>
+        <li><b>note : {{ review.review }}</b></li>
+        <li><b>avis :</b> {{ review.text }}</li>
+    </ul>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="delete">Effacer</button>
+    </form>
+    <p><a href="{%url 'book' book_id %}">Retour au livre</a></p>
+</body>
+</html>
