@@ -25,6 +25,18 @@
         <li class="nav-item"><a class="nav-link" href="{% url 'authorBoard' %}">Liste des auteurs</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'bookBoard' %}">Liste des livres</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'newBook' %}">Ajouter un livre</a></li>
+        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <form method="post" action="{% url 'logout' %}">
+                                {% csrf_token %}
+                                <button type="submit" class="nav-link">logout</button>
+                            </form>
+                        </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a href="{% url 'login' %}" class="nav-link">login</a>
+                            </li>
+                    {% endif %}
       </ul>
     </div>
   </div>
@@ -48,7 +60,7 @@
 
 <!-- Footer -->
 <footer class="bg-light text-center py-3 mt-5">
-    <small>&copy; 2024 Bonnes Lectures - Université d’Orléans</small>
+    <small>&copy; 2025 Bonnes Lectures - Université d’Orléans</small>
 </footer>
 
 <!-- Bootstrap JS -->
