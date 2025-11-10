@@ -20,7 +20,10 @@
         <div class="mb-3">
             <a href="{% url 'edit_book' book.id %}" class="btn btn-warning me-2">Éditer le livre</a>
             <a href="{% url 'delete_book' book.id %}" class="btn btn-danger me-2">Supprimer le livre</a>
-            <a href="{% url 'newReview' book.id %}" class="btn btn-success">Ajouter un avis</a>
+            <a href="{% url 'newReview' book.id %}" class="btn btn-success">Ajouter un avis</a><br><br>
+            {% if book.author %}
+                <a href="{% url 'author' book.author.id %}" class="btn btn-info me-2">Voir la page de l'auteur</a>
+            {% endif %}
         </div>
     </div>
 </div>

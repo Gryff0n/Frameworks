@@ -10,6 +10,10 @@ urlpatterns = [path("about",views.about, name="about"),
                path ( "edit_book/<int:book_id>", views.edit_book , name="edit_book"),
                path ( "ReviewForm/<int:book_id>", views.newReview , name="newReview"),
                path ( "delete_review/<int:book_id>/<int:review_id>", views.delete_review , name="delete_review"),
-               path("edit_review/<int:book_id>/<int:review_id>", views.edit_review, name="edit_review"),
-
+               path ( "edit_review/<int:book_id>/<int:review_id>", views.edit_review, name="edit_review"),
+               path ( "Author_board", views.authorBoard , name="authorBoard"),
+               path ( "AuthorForm", views.newAuthor , name="newAuthor"),
+               path ( "delete_author/<int:author_id>", views.delete_author ,name = "delete_author"),
+               path ( "edit_author/<int:author_id>", views.edit_author , name="edit_author"),
+               path ( "author/<int:author_id>", views.author , name="author")
                ]
