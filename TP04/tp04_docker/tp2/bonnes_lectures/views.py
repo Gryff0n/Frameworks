@@ -39,12 +39,13 @@ def newReview(request, book_id):
     if request.method == "POST":
         form = ReviewForm(request.POST)
         if form.is_valid():
-            newreview = form.save(commit=True)  # Pas de sauvegarde BD
+            newreview = form.save(commit=False)  # Pas de sauvegarde BD
+            newreview.book=book
             newreview.save()  # Sauvegarde en base de données
             return HttpResponseRedirect(f"/book/{book_id}")
     else:
         form = ReviewForm()  # Formulaire vide
-    return render(request, "bonnes_lectures/ReviewForm.html", {"form": form, "button_label": "Ajouter"})
+    return render(request, "bonnes_lectures/ReviewForm.html", {"form": form, "button_label": "Ajouter", "book" : book})
 
 def delete_review(request, book_id, review_id):
     review = get_object_or_404(Review, pk=review_id)
@@ -56,13 +57,17 @@ def delete_review(request, book_id, review_id):
 
 def edit_review(request, book_id, review_id):
     review = get_object_or_404(Review, pk=review_id)
+    book = get_object_or_404(Book, pk=book_id)
     if request.method == "POST":
         form = ReviewForm(request.POST, instance=review)
-        id = check_save(form)
-        return redirect("newReview", review_id=id)
+        if form.is_valid():
+            updated_review = form.save(commit=False)
+            updated_review.book = book
+            updated_review.save()
+            return redirect("book", book_id=book.id)
     else:
         form = ReviewForm(instance=review)
-    return render(request, "bonnes_lectures/ReviewForm.html", {"form": form, "button_label": "Modifier"})
+    return render(request, "bonnes_lectures/ReviewForm.html", {"form": form, "button_label": "Modifier", "book" : book})
 
 def delete_book(request, book_id):
     book = get_object_or_404(Book, pk=book_id)

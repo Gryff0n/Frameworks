@@ -1,25 +1,24 @@
-<!DOCTYPE html >
-<html lang="fr">
-
-{# Load the tag library #}
+{% extends "bonnes_lectures/main.html" %}
 {% load django_bootstrap5 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-{% bootstrap_messages %}
-    <head>
-    <meta charset ="utf-8">
-    </head>
-<!--A FINIR-->
+{% block title %}{{ button_label }} un livre{% endblock %}
 
-
-    <body>
-        <form action ="{% url 'newReview' book.id %}" method = "post">
-            {%csrf_token%} <!--Obligatoire : secu contre CSRF -->
-            {{form}}
-            <input type = "submit" value = "{{button_label}}">
-        </form>
-        <li><a href="/book">liste de livres</a></li>
-        <li><a href="/welcome">retour a l'accueil</a></li>
-    </body>
-
-</html>
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h2>{{ button_label }} un livre</h2>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <button type="submit" class="btn btn-primary mt-2">{{ button_label }}</button>
+            </form>
+            <div class="mt-3">
+                <a href="{% url 'bookBoard' %}" class="btn btn-secondary me-2">Liste des livres</a>
+                <a href="{% url 'welcome' %}" class="btn btn-secondary">Accueil</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

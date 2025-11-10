@@ -1,43 +1,48 @@
-<!DOCTYPE html>
-<html>
-<body>
+{% extends "bonnes_lectures/main.html" %}
 
-{# Load the tag library #}
-{% load django_bootstrap5 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-{% bootstrap_messages %}
+{% block title %}Détails du livre{% endblock %}
 
+{% block content %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h2>{{ book.title }}</h2>
+    </div>
+    <div class="card-body">
+        <ul class="list-group list-group-flush mb-3">
+            <li class="list-group-item"><b>Titre :</b> {{ book.title }}</li>
+            <li class="list-group-item"><b>Éditeur :</b> {{ book.publisher }}</li>
+            <li class="list-group-item"><b>Année :</b> {{ book.year }}</li>
+            <li class="list-group-item"><b>ISBN :</b> {{ book.ISBN }}</li>
+            <li class="list-group-item"><b>Backcover :</b> {{ book.backCover }}</li>
+            <li class="list-group-item"><b>Cover :</b> {{ book.cover }}</li>
+        </ul>
 
-<h1>{{book.title}}</h1>
-<ul>
-    <li><b>Titre : </b>{{book.title}}</li>
-    <li><b>Editeur : </b>{{book.publisher}}</li>
-    <li><b>Année : </b>{{book.year}}</li>
-    <li><b>ISBN : </b>{{book.ISBN}}</li>
-    <li><b>Backcover : </b>{{book.backCover}}</li>
-    <li><b>Cover : </b>{{book.cover}}</li>
-</ul>
-<br>
+        <div class="mb-3">
+            <a href="{% url 'edit_book' book.id %}" class="btn btn-warning me-2">Éditer le livre</a>
+            <a href="{% url 'delete_book' book.id %}" class="btn btn-danger me-2">Supprimer le livre</a>
+            <a href="{% url 'newReview' book.id %}" class="btn btn-success">Ajouter un avis</a>
+        </div>
+    </div>
+</div>
+
 {% if book.reviews.all %}
+    <h3>Avis</h3>
     {% for review in book.reviews.all %}
-    <br>
-    <ul>
-        <b>date de publication : </b>{{review.date}}</li><br>
-        <b>note : </b>{{review.review}}</li><br>
-        <b>avis : </b>{{review.text}}</li><br>
-        <a href="{% url 'newReview' review.id %}">éditer</a><br>
-        <a href="{% url 'delete_review' book.id review.id %}">effacer</a><br>
-    </ul>
-    <br>
+    <div class="card mb-3">
+        <div class="card-body">
+            <p><b>Date de publication :</b> {{ review.date }}</p>
+            <p><b>Note :</b> {{ review.review }}</p>
+            <p><b>Avis :</b> {{ review.text }}</p>
+            <a href="{% url 'edit_review' book.id review.id %}" class="btn btn-warning btn-sm me-1">Modifier</a>
+            <a href="{% url 'delete_review' book.id review.id %}" class="btn btn-danger btn-sm">Supprimer</a>
+        </div>
+    </div>
     {% endfor %}
+{% else %}
+    <p class="text-muted">Aucun avis pour ce livre.</p>
 {% endif %}
-<td>
-<a href="newBook">Ajouter un livre</a><br>
-<a href="{% url 'edit_book' book.id %}">éditer</a><br>
-<a href="{% url 'delete_book' book.id %}">effacer</a><br>
-</td>
-<br>
-<a href="{% url 'newReview' book.id %}">ajouter avis</a><br>
-<br>
-<li><a href="/bookBoard">Retour a la Liste</a></li>
+
+<div class="mt-3">
+    <a href="{% url 'bookBoard' %}" class="btn btn-secondary">Retour à la liste des livres</a>
+</div>
+{% endblock %}

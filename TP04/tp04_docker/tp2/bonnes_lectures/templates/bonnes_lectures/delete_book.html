@@ -1,26 +1,25 @@
-<!DOCTYPE html>
-<html lang="fr">
+{% extends "bonnes_lectures/main.html" %}
 
-{# Load the tag library #}
-{% load django_bootstrap5 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-{% bootstrap_messages %}
+{% block title %}Confirmer la suppression{% endblock %}
 
-<head>
-    <meta charset="utf-8">
-</head>
-<body>
-    <h1>Voulez-vous vraiment effacer le book "{{book.title}}" ?</h1>
-    <ul>
-        <li><b>titre :</b> {{ book.title }}</li>
-        <li><b>éditeur : {{ book.publisher }}</b></li>
-        <li><b>Date de publication :</b> {{ book.year }}</li>
-    </ul>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit" name="delete">Effacer</button>
-    </form>
-    <p><a href="{%url 'bookBoard'%}">Retour à la liste</a></p>
-</body>
-</html>
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h2>Voulez-vous vraiment effacer le livre "{{ book.title }}" ?</h2>
+        </div>
+        <div class="card-body">
+            <ul class="list-group mb-3">
+                <li class="list-group-item"><b>Titre :</b> {{ book.title }}</li>
+                <li class="list-group-item"><b>Éditeur :</b> {{ book.publisher }}</li>
+                <li class="list-group-item"><b>Date de publication :</b> {{ book.year }}</li>
+            </ul>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" name="delete" class="btn btn-danger">Effacer</button>
+                <a href="{% url 'bookBoard' %}" class="btn btn-secondary ms-2">Retour à la liste</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

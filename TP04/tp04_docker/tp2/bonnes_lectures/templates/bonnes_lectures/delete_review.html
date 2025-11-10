@@ -1,26 +1,25 @@
-<!DOCTYPE html>
-<html lang="fr">
+{% extends "bonnes_lectures/main.html" %}
 
-{# Load the tag library #}
-{% load django_bootstrap5 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-{% bootstrap_messages %}
+{% block title %}Confirmer la suppression{% endblock %}
 
-<head>
-    <meta charset="utf-8">
-</head>
-<body>
-    <h1>Voulez-vous vraiment effacer la review ?</h1>
-    <ul>
-        <li><b>date :</b> {{ review.date }}</li>
-        <li><b>note : {{ review.review }}</b></li>
-        <li><b>avis :</b> {{ review.text }}</li>
-    </ul>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit" name="delete">Effacer</button>
-    </form>
-    <p><a href="{%url 'book' book_id %}">Retour au livre</a></p>
-</body>
-</html>
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h2>Voulez-vous vraiment effacer cette review ?</h2>
+        </div>
+        <div class="card-body">
+            <ul class="list-group mb-3">
+                <li class="list-group-item"><b>Date :</b> {{ review.date }}</li>
+                <li class="list-group-item"><b>Note :</b> {{ review.review }}</li>
+                <li class="list-group-item"><b>Avis :</b> {{ review.text }}</li>
+            </ul>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" name="delete" class="btn btn-danger">Effacer</button>
+                <a href="{% url 'book' book_id %}" class="btn btn-secondary ms-2">Retour au livre</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
