@@ -5,7 +5,7 @@ from bonnes_lectures.models import *
 class BookForm (ModelForm) :
     class Meta :
         model = Book
-        fields = ["title" ,"author", "publisher" , "year", "ISBN", "backCover", "cover"]
+        fields = ["title" ,"authors", "publisher" , "year", "ISBN", "backCover", "cover"]
 
 class ReviewForm (ModelForm) :
     class Meta :

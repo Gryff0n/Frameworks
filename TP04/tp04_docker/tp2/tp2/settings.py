@@ -127,3 +127,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'            # redirige vers la page d'accueil
 # ou
 LOGIN_REDIRECT_URL = '/bookBoard'   # redirige vers la liste des livres
+
+LOGIN_URL = '/login/'  # correspond à ton URL réelle
