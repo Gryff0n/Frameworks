@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import *
 from django.contrib.auth.models import User
+from .fields import IsbnField
 
 
 class Author(models.Model):
@@ -17,7 +18,7 @@ class Book(models.Model):
     authors = models.ManyToManyField(Author, related_name="livres")
     publisher = models.CharField(max_length=255)
     year = models.IntegerField()
-    ISBN = models.IntegerField()
+    ISBN = IsbnField()
     backCover = models.CharField()
     cover = models.BooleanField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="books")

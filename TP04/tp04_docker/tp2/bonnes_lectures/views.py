@@ -28,7 +28,7 @@ def newBook(request):
     if request.method == "POST":
         form = BookForm(request.POST)
         if form.is_valid():
-            newbook = form.save(commit=True)  # Pas de sauvegarde BD
+            newbook = form.save(commit=False)  # Pas de sauvegarde BD
             newbook.user = request.user
             newbook.save()  # Sauvegarde en base de données
             form.save_m2m() 
