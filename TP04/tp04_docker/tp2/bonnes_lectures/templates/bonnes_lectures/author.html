@@ -14,8 +14,10 @@
         </ul>
 
         <div class="mb-3">
-            <a href="{% url 'edit_author' author.id %}" class="btn btn-warning me-2">Éditer la page de l'auteur</a>
-            <a href="{% url 'delete_author' author.id %}" class="btn btn-danger me-2">Supprimer l'auteur</a>
+            {% if author.user == request.user %}
+                <a href="{% url 'edit_author' author.id %}" class="btn btn-warning me-2">Éditer la page de l'auteur</a>
+                <a href="{% url 'delete_author' author.id %}" class="btn btn-danger me-2">Supprimer l'auteur</a>
+            {% endif %}
         </div>
     </div>
 </div>

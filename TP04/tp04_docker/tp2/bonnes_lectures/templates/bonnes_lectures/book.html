@@ -10,6 +10,10 @@
     <div class="card-body">
         <ul class="list-group list-group-flush mb-3">
             <li class="list-group-item"><b>Titre :</b> {{ book.title }}</li>
+            <li class="list-group-item">
+                <b>Auteur(s) :</b>
+                {{ book.authors.all|join:", " }}
+            </li>
             <li class="list-group-item"><b>Éditeur :</b> {{ book.publisher }}</li>
             <li class="list-group-item"><b>Année :</b> {{ book.year }}</li>
             <li class="list-group-item"><b>ISBN :</b> {{ book.ISBN }}</li>
@@ -18,11 +22,17 @@
         </ul>
 
         <div class="mb-3">
-            <a href="{% url 'edit_book' book.id %}" class="btn btn-warning me-2">Éditer le livre</a>
-            <a href="{% url 'delete_book' book.id %}" class="btn btn-danger me-2">Supprimer le livre</a>
+            {% if book.user == request.user %}
+                <a href="{% url 'edit_book' book.id %}" class="btn btn-warning me-2">Éditer le livre</a>
+                <a href="{% url 'delete_book' book.id %}" class="btn btn-danger me-2">Supprimer le livre</a>
+            {% endif %}
             <a href="{% url 'newReview' book.id %}" class="btn btn-success">Ajouter un avis</a><br><br>
-            {% if book.author %}
-                <a href="{% url 'author' book.author.id %}" class="btn btn-info me-2">Voir la page de l'auteur</a>
+            {% if book.authors.all %}
+                {% for author in book.authors.all %}
+                    <a href="{% url 'author' author.id %}" class="btn btn-info me-2">
+                        Voir la page de {{ author.prenom }} {{ author.nom }}
+                    </a>
+                {% endfor %}
             {% endif %}
         </div>
     </div>
@@ -36,8 +46,10 @@
             <p><b>Date de publication :</b> {{ review.date }}</p>
             <p><b>Note :</b> {{ review.review }}</p>
             <p><b>Avis :</b> {{ review.text }}</p>
-            <a href="{% url 'edit_review' book.id review.id %}" class="btn btn-warning btn-sm me-1">Modifier</a>
-            <a href="{% url 'delete_review' book.id review.id %}" class="btn btn-danger btn-sm">Supprimer</a>
+            {% if review.user == request.user %}
+                <a href="{% url 'edit_review' book.id review.id %}" class="btn btn-warning btn-sm me-1">Modifier</a>
+                <a href="{% url 'delete_review' book.id review.id %}" class="btn btn-danger btn-sm">Supprimer</a>
+            {% endif %}
         </div>
     </div>
     {% endfor %}

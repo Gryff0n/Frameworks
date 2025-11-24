@@ -1,0 +1,928 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "username": "admin",
+      "password": "pbkdf2_sha256$1000000$uNoG1AFZXPv491MqAjQBDV$tIQ+eAnyxQMQ2z0luN81dz2Zf7b+qX1AdRHKqSvvg10=",
+      "is_superuser": true,
+      "is_staff": true,
+      "is_active": true,
+      "email": "admin@example.com"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "username": "user1",
+      "password": "pbkdf2_sha256$1000000$AdcryUsBWMQvjmGithIHMD$me2g3l4tldDawdVgfSFVgn/J/f5Hwi3YGLsm516ujdQ=",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "email": "user1@example.com"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "username": "user2",
+      "password": "pbkdf2_sha256$1000000$blvv7MMFzMff1YXdgvbQ0u$YNVpjmnkh6OC0yCAY3B50Nzr8IhRJfRFiS1v8k8h+1M=",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "email": "user2@example.com"
+    }
+  },
+  {
+    "model": "bonnes_lectures.author",
+    "pk": 1,
+    "fields": {
+      "prenom": "Victor",
+      "nom": "Hugo",
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.author",
+    "pk": 2,
+    "fields": {
+      "prenom": "Émile",
+      "nom": "Zola",
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.author",
+    "pk": 3,
+    "fields": {
+      "prenom": "Albert",
+      "nom": "Camus",
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.author",
+    "pk": 4,
+    "fields": {
+      "prenom": "Simone",
+      "nom": "de Beauvoir",
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.author",
+    "pk": 5,
+    "fields": {
+      "prenom": "Marcel",
+      "nom": "Proust",
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.author",
+    "pk": 6,
+    "fields": {
+      "prenom": "Marguerite",
+      "nom": "Duras",
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.author",
+    "pk": 7,
+    "fields": {
+      "prenom": "Antoine",
+      "nom": "de Saint-Exupéry",
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 1,
+    "fields": {
+      "title": "Les Misérables",
+      "author": 1,
+      "publisher": "Gallimard",
+      "year": 1862,
+      "ISBN": 9782070409228,
+      "backCover": "Une épopée magistrale de la condition humaine au XIXe siècle",
+      "cover": true,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 2,
+    "fields": {
+      "title": "Notre-Dame de Paris",
+      "author": 1,
+      "publisher": "Gallimard",
+      "year": 1831,
+      "ISBN": 9782070413034,
+      "backCover": "L'histoire tragique de Quasimodo et Esmeralda",
+      "cover": true,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 3,
+    "fields": {
+      "title": "Les Contemplations",
+      "author": 1,
+      "publisher": "Livre de Poche",
+      "year": 1856,
+      "ISBN": 9782253006664,
+      "backCover": "Recueil poétique entre amour et deuil",
+      "cover": false,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 4,
+    "fields": {
+      "title": "Germinal",
+      "author": 2,
+      "publisher": "Fasquelle",
+      "year": 1885,
+      "ISBN": 9782253004226,
+      "backCover": "La lutte des mineurs dans le Nord de la France",
+      "cover": true,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 5,
+    "fields": {
+      "title": "L'Assommoir",
+      "author": 2,
+      "publisher": "Fasquelle",
+      "year": 1877,
+      "ISBN": 9782253002321,
+      "backCover": "La déchéance d'une blanchisseuse parisienne",
+      "cover": true,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 6,
+    "fields": {
+      "title": "Nana",
+      "author": 2,
+      "publisher": "Fasquelle",
+      "year": 1880,
+      "ISBN": 9782253003663,
+      "backCover": "Portrait d'une courtisane sous le Second Empire",
+      "cover": false,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 7,
+    "fields": {
+      "title": "Au Bonheur des Dames",
+      "author": 2,
+      "publisher": "Fasquelle",
+      "year": 1883,
+      "ISBN": 9782253005339,
+      "backCover": "L'avènement des grands magasins parisiens",
+      "cover": true,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 8,
+    "fields": {
+      "title": "L'Étranger",
+      "author": 3,
+      "publisher": "Gallimard",
+      "year": 1942,
+      "ISBN": 9782070360024,
+      "backCover": "L'absurdité de l'existence à travers Meursault",
+      "cover": true,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 9,
+    "fields": {
+      "title": "La Peste",
+      "author": 3,
+      "publisher": "Gallimard",
+      "year": 1947,
+      "ISBN": 9782070360420,
+      "backCover": "Une épidémie qui révèle la nature humaine",
+      "cover": true,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 10,
+    "fields": {
+      "title": "La Chute",
+      "author": 3,
+      "publisher": "Gallimard",
+      "year": 1956,
+      "ISBN": 9782070360314,
+      "backCover": "Confession d'un juge-pénitent à Amsterdam",
+      "cover": false,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 11,
+    "fields": {
+      "title": "Le Mythe de Sisyphe",
+      "author": 3,
+      "publisher": "Gallimard",
+      "year": 1942,
+      "ISBN": 9782070322886,
+      "backCover": "Essai sur l'absurde et la condition humaine",
+      "cover": true,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 12,
+    "fields": {
+      "title": "Le Deuxième Sexe",
+      "author": 4,
+      "publisher": "Gallimard",
+      "year": 1949,
+      "ISBN": 9782070323517,
+      "backCover": "Essai fondateur du féminisme moderne",
+      "cover": true,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 13,
+    "fields": {
+      "title": "Les Mandarins",
+      "author": 4,
+      "publisher": "Gallimard",
+      "year": 1954,
+      "ISBN": 9782070361687,
+      "backCover": "Les intellectuels parisiens après la guerre",
+      "cover": false,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 14,
+    "fields": {
+      "title": "Mémoires d'une jeune fille rangée",
+      "author": 4,
+      "publisher": "Gallimard",
+      "year": 1958,
+      "ISBN": 9782070361816,
+      "backCover": "Autobiographie de la jeunesse de l'auteure",
+      "cover": true,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 15,
+    "fields": {
+      "title": "L'Invitée",
+      "author": 4,
+      "publisher": "Gallimard",
+      "year": 1943,
+      "ISBN": 9782070361854,
+      "backCover": "Triangle amoureux et questions existentielles",
+      "cover": true,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 16,
+    "fields": {
+      "title": "Du côté de chez Swann",
+      "author": 5,
+      "publisher": "Grasset",
+      "year": 1913,
+      "ISBN": 9782070750016,
+      "backCover": "Premier tome de la Recherche du temps perdu",
+      "cover": true,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 17,
+    "fields": {
+      "title": "À l'ombre des jeunes filles en fleurs",
+      "author": 5,
+      "publisher": "Gallimard",
+      "year": 1919,
+      "ISBN": 9782070750023,
+      "backCover": "Deuxième tome de la Recherche, Prix Goncourt",
+      "cover": true,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 18,
+    "fields": {
+      "title": "Le Temps retrouvé",
+      "author": 5,
+      "publisher": "Gallimard",
+      "year": 1927,
+      "ISBN": 9782070750092,
+      "backCover": "Dernier tome de la Recherche du temps perdu",
+      "cover": false,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 19,
+    "fields": {
+      "title": "L'Amant",
+      "author": 6,
+      "publisher": "Minuit",
+      "year": 1984,
+      "ISBN": 9782707302311,
+      "backCover": "Histoire d'amour autobiographique en Indochine",
+      "cover": true,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 20,
+    "fields": {
+      "title": "Moderato cantabile",
+      "author": 6,
+      "publisher": "Minuit",
+      "year": 1958,
+      "ISBN": 9782707302465,
+      "backCover": "Passion et fascination pour un crime",
+      "cover": true,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 21,
+    "fields": {
+      "title": "Le Ravissement de Lol V. Stein",
+      "author": 6,
+      "publisher": "Gallimard",
+      "year": 1964,
+      "ISBN": 9782070213153,
+      "backCover": "Descente dans la folie après un abandon",
+      "cover": false,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 22,
+    "fields": {
+      "title": "Hiroshima mon amour",
+      "author": 6,
+      "publisher": "Gallimard",
+      "year": 1960,
+      "ISBN": 9782070361878,
+      "backCover": "Scénario du film culte d'Alain Resnais",
+      "cover": true,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 23,
+    "fields": {
+      "title": "Le Petit Prince",
+      "author": 7,
+      "publisher": "Gallimard",
+      "year": 1943,
+      "ISBN": 9782070612758,
+      "backCover": "Conte philosophique et poétique universel",
+      "cover": true,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 24,
+    "fields": {
+      "title": "Vol de nuit",
+      "author": 7,
+      "publisher": "Gallimard",
+      "year": 1931,
+      "ISBN": 9782070361625,
+      "backCover": "L'épopée des pionniers de l'aviation",
+      "cover": true,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 25,
+    "fields": {
+      "title": "Terre des hommes",
+      "author": 7,
+      "publisher": "Gallimard",
+      "year": 1939,
+      "ISBN": 9782070361632,
+      "backCover": "Réflexions humanistes d'un aviateur",
+      "cover": true,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 26,
+    "fields": {
+      "title": "Citadelle",
+      "author": 7,
+      "publisher": "Gallimard",
+      "year": 1948,
+      "ISBN": 9782070361649,
+      "backCover": "Œuvre posthume méditative et philosophique",
+      "cover": false,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 27,
+    "fields": {
+      "title": "Les Travailleurs de la mer",
+      "author": 1,
+      "publisher": "Gallimard",
+      "year": 1866,
+      "ISBN": 9782070413041,
+      "backCover": "Combat d'un homme contre l'océan",
+      "cover": true,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 28,
+    "fields": {
+      "title": "La Bête humaine",
+      "author": 2,
+      "publisher": "Fasquelle",
+      "year": 1890,
+      "ISBN": 9782253006282,
+      "backCover": "Thriller naturaliste dans le monde ferroviaire",
+      "cover": true,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 29,
+    "fields": {
+      "title": "L'Homme révolté",
+      "author": 3,
+      "publisher": "Gallimard",
+      "year": 1951,
+      "ISBN": 9782070323708,
+      "backCover": "Essai sur la révolte et la révolution",
+      "cover": false,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.book",
+    "pk": 30,
+    "fields": {
+      "title": "La Force de l'âge",
+      "author": 4,
+      "publisher": "Gallimard",
+      "year": 1960,
+      "ISBN": 9782070361823,
+      "backCover": "Suite des mémoires de Simone de Beauvoir",
+      "cover": true,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 1,
+    "fields": {
+      "date": "2024-01-01",
+      "text": "Un chef-d'œuvre absolu ! Les Misérables est une fresque épique qui m'a profondément touché.",
+      "review": 5,
+      "book": 1,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 2,
+    "fields": {
+      "date": "2024-01-02",
+      "text": "L'histoire de Jean Valjean est bouleversante. Hugo décrit magistralement la société du XIXe siècle.",
+      "review": 5,
+      "book": 1,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 3,
+    "fields": {
+      "date": "2024-01-03",
+      "text": "Notre-Dame de Paris est captivant du début à la fin. Les personnages sont inoubliables.",
+      "review": 4,
+      "book": 2,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 4,
+    "fields": {
+      "date": "2024-01-04",
+      "text": "Quasimodo et Esmeralda restent gravés dans ma mémoire. Un roman puissant.",
+      "review": 5,
+      "book": 2,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 5,
+    "fields": {
+      "date": "2024-01-05",
+      "text": "Les Contemplations sont d'une beauté poétique rare. Hugo exprime magnifiquement le deuil.",
+      "review": 4,
+      "book": 3,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 6,
+    "fields": {
+      "date": "2024-01-06",
+      "text": "Germinal est un roman social d'une force incroyable. Zola dénonce avec justesse.",
+      "review": 5,
+      "book": 4,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 7,
+    "fields": {
+      "date": "2024-01-07",
+      "text": "La description du monde des mineurs est saisissante et réaliste. Un incontournable.",
+      "review": 5,
+      "book": 4,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 8,
+    "fields": {
+      "date": "2024-01-08",
+      "text": "L'Assommoir montre crûment la misère parisienne. Dur mais nécessaire.",
+      "review": 4,
+      "book": 5,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 9,
+    "fields": {
+      "date": "2024-01-09",
+      "text": "Nana est un portrait fascinant de la demi-mondaine. Zola excelle dans les détails.",
+      "review": 4,
+      "book": 6,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 10,
+    "fields": {
+      "date": "2024-01-10",
+      "text": "Au Bonheur des Dames décrit parfaitement la naissance de la société de consommation.",
+      "review": 4,
+      "book": 7,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 11,
+    "fields": {
+      "date": "2024-01-11",
+      "text": "L'Étranger est déstabilisant et profond. Meursault incarne l'absurde à merveille.",
+      "review": 5,
+      "book": 8,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 12,
+    "fields": {
+      "date": "2024-01-12",
+      "text": "Un roman qui questionne fondamentalement notre rapport au monde. Magistral.",
+      "review": 5,
+      "book": 8,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 13,
+    "fields": {
+      "date": "2024-01-13",
+      "text": "La Peste est une métaphore puissante sur la condition humaine face au mal.",
+      "review": 5,
+      "book": 9,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 14,
+    "fields": {
+      "date": "2024-01-14",
+      "text": "Camus montre l'héroïsme dans les petites actions quotidiennes. Très touchant.",
+      "review": 4,
+      "book": 9,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 15,
+    "fields": {
+      "date": "2024-01-15",
+      "text": "La Chute est un monologue troublant. Jean-Baptiste Clamence est fascinant.",
+      "review": 4,
+      "book": 10,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 16,
+    "fields": {
+      "date": "2024-01-16",
+      "text": "Le Mythe de Sisyphe est un essai essentiel pour comprendre la philosophie de Camus.",
+      "review": 5,
+      "book": 11,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 17,
+    "fields": {
+      "date": "2024-01-17",
+      "text": "Il faut imaginer Sisyphe heureux... Cette phrase résume tout. Brillant.",
+      "review": 5,
+      "book": 11,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 18,
+    "fields": {
+      "date": "2024-01-18",
+      "text": "Le Deuxième Sexe est révolutionnaire. Simone de Beauvoir analyse avec acuité.",
+      "review": 5,
+      "book": 12,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 19,
+    "fields": {
+      "date": "2024-01-19",
+      "text": "Un texte fondamental pour comprendre le féminisme. Dense mais captivant.",
+      "review": 5,
+      "book": 12,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 20,
+    "fields": {
+      "date": "2024-01-20",
+      "text": "Les Mandarins offre un regard unique sur l'après-guerre. Prix Goncourt mérité.",
+      "review": 4,
+      "book": 13,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 21,
+    "fields": {
+      "date": "2024-01-21",
+      "text": "Mémoires d'une jeune fille rangée est passionnant. L'émancipation d'une femme.",
+      "review": 4,
+      "book": 14,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 22,
+    "fields": {
+      "date": "2024-01-22",
+      "text": "L'Invitée explore avec finesse les relations humaines et la jalousie.",
+      "review": 4,
+      "book": 15,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 23,
+    "fields": {
+      "date": "2024-01-23",
+      "text": "Du côté de chez Swann exige de la patience, mais quelle récompense !",
+      "review": 4,
+      "book": 16,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 24,
+    "fields": {
+      "date": "2024-01-24",
+      "text": "Proust maîtrise l'art de la mémoire involontaire. La madeleine est mythique.",
+      "review": 5,
+      "book": 16,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 25,
+    "fields": {
+      "date": "2024-01-25",
+      "text": "À l'ombre des jeunes filles en fleurs est encore plus abouti que le premier tome.",
+      "review": 5,
+      "book": 17,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 26,
+    "fields": {
+      "date": "2024-01-26",
+      "text": "Le Temps retrouvé conclut magistralement cette œuvre monumentale.",
+      "review": 5,
+      "book": 18,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 27,
+    "fields": {
+      "date": "2024-01-27",
+      "text": "L'Amant est d'une sensualité troublante. Duras écrit avec une économie de mots.",
+      "review": 5,
+      "book": 19,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 28,
+    "fields": {
+      "date": "2024-01-28",
+      "text": "L'histoire d'amour en Indochine est magnifiquement racontée. Prix Goncourt mérité.",
+      "review": 5,
+      "book": 19,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 29,
+    "fields": {
+      "date": "2024-01-29",
+      "text": "Moderato cantabile est hypnotique. L'écriture de Duras est unique.",
+      "review": 4,
+      "book": 20,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 30,
+    "fields": {
+      "date": "2024-01-30",
+      "text": "Le Ravissement de Lol V. Stein est complexe mais fascinant. Un travail sur la folie.",
+      "review": 4,
+      "book": 21,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 31,
+    "fields": {
+      "date": "2024-01-31",
+      "text": "Hiroshima mon amour mêle histoire collective et intime avec brio.",
+      "review": 4,
+      "book": 22,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 32,
+    "fields": {
+      "date": "2024-02-01",
+      "text": "Le Petit Prince est intemporel. À lire et relire à tout âge.",
+      "review": 5,
+      "book": 23,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 33,
+    "fields": {
+      "date": "2024-02-02",
+      "text": "Un conte philosophique magnifique qui touche petits et grands.",
+      "review": 5,
+      "book": 23,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 34,
+    "fields": {
+      "date": "2024-02-03",
+      "text": "Vol de nuit capture l'esprit des pionniers de l'aviation avec poésie.",
+      "review": 4,
+      "book": 24,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 35,
+    "fields": {
+      "date": "2024-02-04",
+      "text": "Terre des hommes est un hymne à l'humanité et à la fraternité.",
+      "review": 5,
+      "book": 25,
+      "user": 3
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 36,
+    "fields": {
+      "date": "2024-02-05",
+      "text": "Saint-Exupéry allie action et réflexion philosophique avec talent.",
+      "review": 4,
+      "book": 25,
+      "user": 2
+    }
+  },
+  {
+    "model": "bonnes_lectures.review",
+    "pk": 37,
+    "fields": {
+      "date": "2024-02-06",
+      "text": "Citadelle est une œuvre méditative profonde, parfois difficile mais enrichissante.",
+      "review": 3,
+      "book": 26,
+      "user": 2
+    }
+  }
+]
