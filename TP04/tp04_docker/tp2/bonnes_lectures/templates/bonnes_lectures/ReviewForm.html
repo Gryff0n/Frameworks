@@ -1,22 +1,41 @@
 {% extends "bonnes_lectures/main.html" %}
+{% load i18n %}
 {% load django_bootstrap5 %}
-{% block title %}{{ button_label }} un avis{% endblock %}
+{% block title %}
+    {% if button_label == "Ajouter" %}
+        {% trans "Ajouter un avis" %}
+    {% else %}
+        {% trans "Modifier un avis" %}
+    {% endif %}
+{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
     <div class="card">
         <div class="card-header">
-            <h2>{{ button_label }} un avis</h2>
+            <h2>
+            {% if button_label == "Ajouter" %}
+                {% trans "Ajouter un avis" %}
+            {% else %}
+                {% trans "Modifier un avis" %}
+            {% endif %}
+            </h2>
         </div>
         <div class="card-body">
             <form method="post">
                 {% csrf_token %}
                 {% bootstrap_form form %}
-                <button type="submit" class="btn btn-primary mt-2">{{ button_label }}</button>
+                <button type="submit" class="btn btn-primary mt-2">
+                {% if button_label == "Ajouter" %}
+                    {% trans "Ajouter" %}
+                {% else %}
+                    {% trans "Modifier" %}
+                {% endif %}
+                </button>
             </form>
             <div class="mt-3">
-                <a href="{% url 'bookBoard' %}" class="btn btn-secondary me-2">Liste des livres</a>
-                <a href="{% url 'welcome' %}" class="btn btn-secondary">Accueil</a>
+                <a href="{% url 'bookBoard' %}" class="btn btn-secondary me-2">{% trans Liste des livres %}</a>
+                <a href="{% url 'welcome' %}" class="btn btn-secondary">{% trans Accueil %}</a>
             </div>
         </div>
     </div>

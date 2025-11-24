@@ -1,6 +1,6 @@
 {% extends "bonnes_lectures/main.html" %}
-
-{% block title %}Détails du livre{% endblock %}
+{% load i18n %}
+{% block title %}{% trans Détails du livre %}{% endblock %}
 
 {% block content %}
 <div class="card mb-4">
@@ -9,30 +9,20 @@
     </div>
     <div class="card-body">
         <ul class="list-group list-group-flush mb-3">
-            <li class="list-group-item"><b>Titre :</b> {{ book.title }}</li>
-            <li class="list-group-item">
-                <b>Auteur(s) :</b>
-                {{ book.authors.all|join:", " }}
-            </li>
-            <li class="list-group-item"><b>Éditeur :</b> {{ book.publisher }}</li>
-            <li class="list-group-item"><b>Année :</b> {{ book.year }}</li>
-            <li class="list-group-item"><b>ISBN :</b> {{ book.ISBN }}</li>
-            <li class="list-group-item"><b>Backcover :</b> {{ book.backCover }}</li>
-            <li class="list-group-item"><b>Cover :</b> {{ book.cover }}</li>
+            <li class="list-group-item"><b>{% trans Titre : %}</b> {{ book.title }}</li>
+            <li class="list-group-item"><b>{% trans Éditeur : %}</b> {{ book.publisher }}</li>
+            <li class="list-group-item"><b>{% trans Année : %}</b> {{ book.year }}</li>
+            <li class="list-group-item"><b>{% trans ISBN : %}</b> {{ book.ISBN }}</li>
+            <li class="list-group-item"><b>{% trans Backcover : %}</b> {{ book.backCover }}</li>
+            <li class="list-group-item"><b>{% trans Cover : %}</b> {{ book.cover }}</li>
         </ul>
 
         <div class="mb-3">
-            {% if book.user == request.user %}
-                <a href="{% url 'edit_book' book.id %}" class="btn btn-warning me-2">Éditer le livre</a>
-                <a href="{% url 'delete_book' book.id %}" class="btn btn-danger me-2">Supprimer le livre</a>
-            {% endif %}
-            <a href="{% url 'newReview' book.id %}" class="btn btn-success">Ajouter un avis</a><br><br>
-            {% if book.authors.all %}
-                {% for author in book.authors.all %}
-                    <a href="{% url 'author' author.id %}" class="btn btn-info me-2">
-                        Voir la page de {{ author.prenom }} {{ author.nom }}
-                    </a>
-                {% endfor %}
+            <a href="{% url 'edit_book' book.id %}" class="btn btn-warning me-2">{% trans Éditer le livre %}</a>
+            <a href="{% url 'delete_book' book.id %}" class="btn btn-danger me-2">{% trans Supprimer le livre %}</a>
+            <a href="{% url 'newReview' book.id %}" class="btn btn-success">{% trans Ajouter un avis %}</a><br><br>
+            {% if book.author %}
+                <a href="{% url 'author' book.author.id %}" class="btn btn-info me-2">{% trans Voir la page de l'auteur %}</a>
             {% endif %}
         </div>
     </div>
@@ -43,21 +33,19 @@
     {% for review in book.reviews.all %}
     <div class="card mb-3">
         <div class="card-body">
-            <p><b>Date de publication :</b> {{ review.date }}</p>
-            <p><b>Note :</b> {{ review.review }}</p>
-            <p><b>Avis :</b> {{ review.text }}</p>
-            {% if review.user == request.user %}
-                <a href="{% url 'edit_review' book.id review.id %}" class="btn btn-warning btn-sm me-1">Modifier</a>
-                <a href="{% url 'delete_review' book.id review.id %}" class="btn btn-danger btn-sm">Supprimer</a>
-            {% endif %}
+            <p><b>{% trans Date de publication : %}</b> {{ review.date }}</p>
+            <p><b>{% trans Note : %}</b> {{ review.review }}</p>
+            <p><b>{% trans Avis : %}</b> {{ review.text }}</p>
+            <a href="{% url 'edit_review' book.id review.id %}" class="btn btn-warning btn-sm me-1">{% trans Modifier %}</a>
+            <a href="{% url 'delete_review' book.id review.id %}" class="btn btn-danger btn-sm">{% trans Supprimer %}</a>
         </div>
     </div>
     {% endfor %}
 {% else %}
-    <p class="text-muted">Aucun avis pour ce livre.</p>
+    <p class="text-muted">{% trans Aucun avis pour ce livre. %}</p>
 {% endif %}
 
 <div class="mt-3">
-    <a href="{% url 'bookBoard' %}" class="btn btn-secondary">Retour à la liste des livres</a>
+    <a href="{% url 'bookBoard' %}" class="btn btn-secondary">{% trans Retour à la liste des livres %}</a>
 </div>
 {% endblock %}

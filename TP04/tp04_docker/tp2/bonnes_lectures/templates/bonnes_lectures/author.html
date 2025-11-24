@@ -1,6 +1,6 @@
 {% extends "bonnes_lectures/main.html" %}
-
-{% block title %}Détails du livre{% endblock %}
+{% load i18n %}
+{% block title %}{% trans Détails du livre %}{% endblock %}
 
 {% block content %}
 <div class="card mb-4">
@@ -9,44 +9,42 @@
     </div>
     <div class="card-body">
         <ul class="list-group list-group-flush mb-3">
-            <li class="list-group-item"><b>Nom :</b> {{ author.nom }}</li>
-            <li class="list-group-item"><b>Prénom :</b> {{ author.prenom }}</li>
+            <li class="list-group-item"><b>{% trans Nom : %}</b> {{ author.nom }}</li>
+            <li class="list-group-item"><b>{% trans Prénom : %}</b> {{ author.prenom }}</li>
         </ul>
 
         <div class="mb-3">
-            {% if author.user == request.user %}
-                <a href="{% url 'edit_author' author.id %}" class="btn btn-warning me-2">Éditer la page de l'auteur</a>
-                <a href="{% url 'delete_author' author.id %}" class="btn btn-danger me-2">Supprimer l'auteur</a>
-            {% endif %}
+            <a href="{% url 'edit_author' author.id %}" class="btn btn-warning me-2">{% trans Éditer la page de l'auteur %}</a>
+            <a href="{% url 'delete_author' author.id %}" class="btn btn-danger me-2">{% trans Supprimer l'auteur %}</a>
         </div>
     </div>
 </div>
 
 {% if author.livres.all %}
-    <h3>Avis</h3>
+    <h3>{% trans Avis %}</h3>
     {% for book in author.livres.all %}
     <div class="card mb-3">
         <div class="card-body">
             <ul class="list-group list-group-flush mb-3">
-                <li class="list-group-item"><b>Titre :</b> {{ book.title }}</li>
-                <li class="list-group-item"><b>Éditeur :</b> {{ book.publisher }}</li>
-                <li class="list-group-item"><b>Année :</b> {{ book.year }}</li>
-                <li class="list-group-item"><b>ISBN :</b> {{ book.ISBN }}</li>
-                <li class="list-group-item"><b>Backcover :</b> {{ book.backCover }}</li>
-                <li class="list-group-item"><b>Cover :</b> {{ book.cover }}</li>
+                <li class="list-group-item"><b>{% trans Titre : %}</b> {{ book.title }}</li>
+                <li class="list-group-item"><b>{% trans Éditeur : %}</b> {{ book.publisher }}</li>
+                <li class="list-group-item"><b>{% trans Année : %}</b> {{ book.year }}</li>
+                <li class="list-group-item"><b>{% trans ISBN : %}</b> {{ book.ISBN }}</li>
+                <li class="list-group-item"><b>{% trans Backcover : %}</b> {{ book.backCover }}</li>
+                <li class="list-group-item"><b>{% trans Cover : %}</b> {{ book.cover }}</li>
             </ul>
 
             <div class="mb-3">
-                <a href="{% url 'book' book.id %}" class="btn btn-info btn-sm me-1">Voir</a>
+                <a href="{% url 'book' book.id %}" class="btn btn-info btn-sm me-1">{% trans Voir %}</a>
             </div>
         </div>
     </div>
     {% endfor %}
 {% else %}
-    <p class="text-muted">Aucun livre pour cet auteur.</p>
+    <p class="text-muted">{% trans Aucun livre pour cet auteur. %}</p>
 {% endif %}
 
 <div class="mt-3">
-    <a href="{% url 'authorBoard' %}" class="btn btn-secondary">Retour à la liste des auteurs</a>
+    <a href="{% url 'authorBoard' %}" class="btn btn-secondary">{% trans Retour à la liste des auteurs %}</a>
 </div>
 {% endblock %}

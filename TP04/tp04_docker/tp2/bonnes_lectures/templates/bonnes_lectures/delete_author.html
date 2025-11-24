@@ -1,22 +1,22 @@
 {% extends "bonnes_lectures/main.html" %}
-
-{% block title %}Confirmer la suppression{% endblock %}
+{% load i18n %}
+{% block title %}{% trans Confirmer la suppression %}{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
     <div class="card">
         <div class="card-header">
-            <h2>Voulez-vous vraiment effacer l'auteur "{{ author.prenom }} {{ author.nom }}" ?</h2>
+            <h2>{% trans Voulez-vous vraiment effacer l'auteur %} "{{ author.prenom }} {{ author.nom }}" ?</h2>
         </div>
         <div class="card-body">
             <ul class="list-group mb-3">
-                <li class="list-group-item"><b>Prénom :</b> {{ author.prenom }}</li>
-                <li class="list-group-item"><b>Nom :</b> {{ author.nom }}</li>
+                <li class="list-group-item"><b>{% trans Prénom : %}</b> {{ author.prenom }}</li>
+                <li class="list-group-item"><b>{% trans Nom : %}</b> {{ author.nom }}</li>
             </ul>
             <form method="post">
                 {% csrf_token %}
-                <button type="submit" name="delete" class="btn btn-danger">Effacer</button>
-                <a href="{% url 'authorBoard' %}" class="btn btn-secondary ms-2">Retour à la liste des auteurs</a>
+                <button type="submit" name="delete" class="btn btn-danger">{% trans Effacer %}</button>
+                <a href="{% url 'authorBoard' %}" class="btn btn-secondary ms-2">{% trans Retour à la liste des auteurs %}</a>
             </form>
         </div>
     </div>

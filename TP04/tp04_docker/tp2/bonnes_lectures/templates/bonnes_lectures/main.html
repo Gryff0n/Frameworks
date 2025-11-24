@@ -1,13 +1,13 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Bonnes Lectures{% endblock %}</title>
+    <title>{% block title %}{% trans "Bonnes Lectures" %}{% endblock %}</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     
     {% block extra_head %}{% endblock %}
 </head>
@@ -15,31 +15,70 @@
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'welcome' %}">Bonnes Lectures</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="{% url 'authorBoard' %}">Liste des auteurs</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'bookBoard' %}">Liste des livres</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'newBook' %}">Ajouter un livre</a></li>
-        {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <form method="post" action="{% url 'logout' %}">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'welcome' %}">{% trans "Bonnes Lectures" %}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'authorBoard' %}">{% trans "Liste des auteurs" %}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'bookBoard' %}">{% trans "Liste des livres" %}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'newBook' %}">{% trans "Ajouter un livre" %}</a></li>
+                
+                <!-- Sélecteur de langue -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-bs-toggle="dropdown">
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% if LANGUAGE_CODE == 'fr' %}
+                            🇫🇷 Français
+                        {% elif LANGUAGE_CODE == 'en' %}
+                            🇬🇧 English
+                        {% else %}
+                            {{ LANGUAGE_CODE|upper }}
+                        {% endif %}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <form action="{% url 'set_language' %}" method="post" style="display: inline;">
                                 {% csrf_token %}
-                                <button type="submit" class="nav-link">logout</button>
+                                <input name="next" type="hidden" value="{{ request.path }}" />
+                                <input name="language" type="hidden" value="fr" />
+                                <button type="submit" class="dropdown-item {% get_current_language as LANG %}{% if LANG == 'fr' %}active{% endif %}">
+                                    🇫🇷 Français
+                                </button>
                             </form>
                         </li>
-                        {% else %}
-                            <li class="nav-item">
-                                <a href="{% url 'login' %}" class="nav-link">login</a>
-                            </li>
-                    {% endif %}
-      </ul>
+                        <li>
+                            <form action="{% url 'set_language' %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <input name="next" type="hidden" value="{{ request.path }}" />
+                                <input name="language" type="hidden" value="en" />
+                                <button type="submit" class="dropdown-item {% get_current_language as LANG %}{% if LANG == 'en' %}active{% endif %}">
+                                    🇬🇧 English
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="nav-link btn btn-link" style="border: none; background: none;">
+                                {% trans "Déconnexion" %}
+                            </button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a href="{% url 'login' %}" class="nav-link">{% trans "Connexion" %}</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>
 
 <!-- Container principal -->
@@ -54,17 +93,19 @@
     {% endif %}
     
     {% block content %}
-    <!-- Ici les templates enfants injecteront leur contenu -->
+        <!-- Ici les templates enfants injecteront leur contenu -->
     {% endblock %}
 </div>
 
 <!-- Footer -->
 <footer class="bg-light text-center py-3 mt-5">
-    <small>&copy; 2025 Bonnes Lectures - Université d’Orléans</small>
+    <small>&copy; 2025 {% trans "Bonnes Lectures - Université d'Orléans" %}</small>
 </footer>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 {% block extra_js %}{% endblock %}
+
 </body>
 </html>

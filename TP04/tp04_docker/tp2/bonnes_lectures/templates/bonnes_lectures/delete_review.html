@@ -1,23 +1,23 @@
 {% extends "bonnes_lectures/main.html" %}
-
-{% block title %}Confirmer la suppression{% endblock %}
+{% load i18n %}
+{% block title %}{% trans Confirmer la suppression %}{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
     <div class="card">
         <div class="card-header">
-            <h2>Voulez-vous vraiment effacer cette review ?</h2>
+            <h2>{% trans Voulez-vous vraiment effacer cette review ? %}</h2>
         </div>
         <div class="card-body">
             <ul class="list-group mb-3">
-                <li class="list-group-item"><b>Date :</b> {{ review.date }}</li>
-                <li class="list-group-item"><b>Note :</b> {{ review.review }}</li>
-                <li class="list-group-item"><b>Avis :</b> {{ review.text }}</li>
+                <li class="list-group-item"><b>{% trans Date : %}</b> {{ review.date }}</li>
+                <li class="list-group-item"><b>{% trans Note : %}</b> {{ review.review }}</li>
+                <li class="list-group-item"><b>{% trans Avis : %}</b> {{ review.text }}</li>
             </ul>
             <form method="post">
                 {% csrf_token %}
-                <button type="submit" name="delete" class="btn btn-danger">Effacer</button>
-                <a href="{% url 'book' book_id %}" class="btn btn-secondary ms-2">Retour au livre</a>
+                <button type="submit" name="delete" class="btn btn-danger">{% trans Effacer %}</button>
+                <a href="{% url 'book' book_id %}" class="btn btn-secondary ms-2">{% trans Retour au livre %}</a>
             </form>
         </div>
     </div>

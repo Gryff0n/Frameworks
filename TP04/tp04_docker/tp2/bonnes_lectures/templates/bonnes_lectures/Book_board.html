@@ -1,19 +1,19 @@
 {% extends "bonnes_lectures/main.html" %}
-
-{% block title %}Liste des livres{% endblock %}
+{% load i18n %}
+{% block title %}{% trans Liste des livres %}{% endblock %}
 
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h1>Book Board</h1>
-    <a href="{% url 'newBook' %}" class="btn btn-success">Ajouter un livre</a>
+    <a href="{% url 'newBook' %}" class="btn btn-success">{% trans Ajouter un livre %}</a>
 </div>
 
 <table class="table table-striped table-hover">
     <thead class="table-primary">
         <tr>
-            <th>Titre</th>
-            <th>Date de publication</th>
-            <th>Actions</th>
+            <th>{% trans Titre %}</th>
+            <th>{% trans Date de publication %}</th>
+            <th>{% trans Actions %}</th>
         </tr>
     </thead>
     <tbody>
@@ -22,17 +22,14 @@
             <td>{{ book.title }}</td>
             <td>{{ book.year }}</td>
             <td>
-                
-                <a href="{% url 'book' book.id %}" class="btn btn-info btn-sm me-1">Voir</a>
-                {% if book.user == request.user %}
-                    <a href="{% url 'edit_book' book.id %}" class="btn btn-warning btn-sm me-1">Éditer</a>
-                    <a href="{% url 'delete_book' book.id %}" class="btn btn-danger btn-sm">Effacer</a>
-                {% endif %}
+                <a href="{% url 'book' book.id %}" class="btn btn-info btn-sm me-1">{% trans Voir %}</a>
+                <a href="{% url 'edit_book' book.id %}" class="btn btn-warning btn-sm me-1">{% trans Éditer %}</a>
+                <a href="{% url 'delete_book' book.id %}" class="btn btn-danger btn-sm">{% trans Effacer %}</a>
             </td>
         </tr>
         {% empty %}
         <tr>
-            <td colspan="3" class="text-center">Aucun livre trouvé.</td>
+            <td colspan="3" class="text-center">{% trans Aucun livre trouvé. %}</td>
         </tr>
         {% endfor %}
     </tbody>

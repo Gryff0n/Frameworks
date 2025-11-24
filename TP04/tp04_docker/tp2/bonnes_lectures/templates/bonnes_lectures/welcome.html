@@ -1,27 +1,27 @@
 {% extends "bonnes_lectures/main.html" %}
 
-{% block title %}Bonnes Lectures{% endblock %}
+{% block title %}{% trans Bonnes Lectures %}{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
     <div class="text-center mb-4">
-        <h1>Bonnes Lectures</h1>
+        <h1>{% trans Bonnes Lectures %}</h1>
     </div>
     <div class="mb-4 text-center">
         <p>
-            Vous souhaitez des avis sur les dernières nouveautés littéraires ? Vous souhaitez des
+            {% trans Vous souhaitez des avis sur les dernières nouveautés littéraires ? Vous souhaitez des
             recommandations pertinentes pour choisir votre prochain livre ? Vous êtes là où il
             faut ! <br>
             Feuilletez les critiques de millions d’ouvrages passés en revue par des lecteurs comme
             vous. <br>
             Créez votre profil, dites-nous quels sont les derniers titres que vous avez aimés, ou
-            vos genres favoris, et nous vous conseillerons.
+            vos genres favoris, et nous vous conseillerons. %}
         </p>
     </div>
     <div class="d-flex flex-column align-items-center gap-2">
-        <a href="{% url 'bookBoard' %}" class="btn btn-primary btn-lg">Liste de livres</a>
-        <a href="{% url 'authorBoard' %}" class="btn btn-primary btn-lg">Liste d'auteurs</a>
-        <a href="{% url 'newBook' %}" class="btn btn-success btn-lg">Ajouter un livre</a>
+        <a href="{% url 'bookBoard' %}" class="btn btn-primary btn-lg">{% trans Liste de livres %}</a>
+        <a href="{% url 'authorBoard' %}" class="btn btn-primary btn-lg">{% trans Liste d'auteurs %}</a>
+        <a href="{% url 'newBook' %}" class="btn btn-success btn-lg">{% trans Ajouter un livre %}</a>
     </div>
 </div>
 {% endblock %}
